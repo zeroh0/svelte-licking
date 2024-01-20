@@ -40,17 +40,29 @@
   };
 </script>
 
-<h2>Todo List</h2>
+<div class="ml-4 mr-4">
+  <h2 class="text-2xl text-center mt-6">Todo List</h2>
+  <p class="text-gray-400 text-center mt-1">할 일을 추가해보세용~</p>
+  <div class="flex flex-row mt-10 h-9">
+    <input class=" pl-1.5 basis-3/4 rounded border" type="text" bind:value={inputValue} on:keypress={handleAddTodo} />
+    <button class="ml-4 bg-blue-600 text-white basis-1/4 rounded" type="button" on:click={addTodo}>Add</button>
+  </div>
 
-<input type="text" bind:value={inputValue} on:keypress={handleAddTodo} />
-<button type="button" on:click={addTodo}>Add</button>
-
-<ul>
-  {#each todos as todo}
-    <li style="list-style: none;">
-      <input type="checkbox" id={todo.id} checked={todo.completed} on:change={() => changeCompleted(todo)} />
-      <label for={todo.id} style="text-decoration: {todo.completed ? 'line-through' : 'none'}">{todo.title}</label>
-      <button on:click={() => deleteTodo(todo)}>❌</button>
-    </li>
-  {/each}
-</ul>
+  <ul class="flex flex-col mt-12">
+    {#each todos as todo}
+      <li class="list-none flex flex-row mb-2 items-center">
+        <input
+          class="size-5"
+          type="checkbox"
+          id={todo.id}
+          checked={todo.completed}
+          on:change={() => changeCompleted(todo)}
+        />
+        <label for={todo.id} class="{todo.completed ? 'line-through' : 'no-underline'} text-xl grow pl-2"
+          >{todo.title}</label
+        >
+        <button on:click={() => deleteTodo(todo)}>❌</button>
+      </li>
+    {/each}
+  </ul>
+</div>
