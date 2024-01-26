@@ -1,8 +1,17 @@
 <script>
+  import { parse } from 'svelte/compiler';
   import TodoList from './TodoList.svelte';
+  import { onMount } from 'svelte';
 
   let todos = [];
   let inputValue = '';
+
+  onMount(() => {
+		const localTodo = localStorage.getItem('todos');
+    if (localTodo) {
+      todos = JSON.parse(localTodo);
+    }
+	});
 
   /**
    * 할 일 추가
@@ -10,6 +19,7 @@
   const addTodo = () => {
     if (!inputValue) return;
     todos = [{ id: todos.length + 1, title: inputValue, completed: false }, ...todos];
+    localStorage.setItem('todos', JSON.stringify(todos));
     inputValue = '';
   };
 

@@ -13,10 +13,12 @@
       }
       return todo;
     });
+    localStorage.setItem('todos', JSON.stringify(todos));
   };
 
   const deleteTodo = (selectedTodo) => {
     todos = todos.filter((todo) => todo.id != selectedTodo.id);
+    localStorage.setItem('todos', JSON.stringify(todos));
   };
 </script>
 
