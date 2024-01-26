@@ -41,5 +41,5 @@
     <input class=" pl-1.5 basis-3/4 rounded border" type="text" bind:value={inputValue} on:keypress={handleAddTodo} />
     <button class="ml-4 bg-blue-600 text-white basis-1/4 rounded" type="button" on:click={addTodo}>Add</button>
   </div>
-  <TodoList {todos} />
+  <TodoList bind:todos={todos} />
 </div>

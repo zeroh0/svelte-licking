@@ -1,5 +1,5 @@
 <script>
-  export let todos = [];
+  export let todos;
 
   /**
    * 완료 상태 변경
